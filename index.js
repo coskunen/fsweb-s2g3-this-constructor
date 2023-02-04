@@ -14,11 +14,30 @@
         + Bu `isim` ve `yas` i içeren bir string döndürmelidir Örnek: "Mary, 50"
 */
 
-function Kisi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function Kisi(isim , yas) {
+  this.isim = isim ;
+  this.yas = yas ;
+  this.mide = [];
+  this.ye =function(birYemek){
+    if(this.mide.length<11){
+    this.mide.push(birYemek);
+  }}
+  this.bosalt = function (birYemek){
+   this.mide = [];
+  }
+  this.toString = function(){
+    return `${this.isim}, ${this.yas}`
+  }
+
 }
 
-
+let adam = new Kisi("Coskun" , 33);
+console.log(adam);
+adam.ye("patates");
+adam.ye("hamburger");
+console.log(adam.mide);
+adam.toString();
+console.log(adam.toString());
 /*
   GÖREV 2
     - Bir Araba constructoru yazın, parametre olarak `model` ve `milesPerGallon` alsın.
@@ -35,9 +54,28 @@ function Kisi(/* kodlar buraya */) {
         +  "x milde benzinim bitti!" x değişkeni `odometer` daki sayı olmalıdır.
 */
 
-function Araba(/* kodlar buraya */) {
-  /* kodlar buraya */
+function Araba(model , milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon ;
+  this.tank = 0 ;
+  this.odometer = 0 ;
+  this.fill = function(galon) {
+      this.tank += galon ; 
+  }
+  this.drive = function(distance){
+    this.odometer += distance ;
+    this.tank -= (distance / this.milesPerGallon);
+  if(this.tank <= 0){
+    console.log `${this.odometer} milde benzinim bitti!`
+  }
+  }
 }
+let vw = new Araba("passat" , 15);
+vw.fill(65);
+vw.drive(10);
+vw.drive(5);
+console.log(vw.tank);
+console.log(vw.odometer);
 
 
 /* 
